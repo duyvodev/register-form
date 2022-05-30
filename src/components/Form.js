@@ -11,7 +11,26 @@ export default function Form() {
   const [rePasswd, setRePasswd] = useState("");
 
   //   Click button
-  const handleSubmit = (e) => {};
+  const handleSubmit = () => {
+    let resultJson = ""
+    handleBlurName()
+    handleBlurUserName()
+    handleBlurEmail()
+    handleBlurPasswd()
+    handleBlurRePasswd()
+
+    if (handleBlurName() && handleBlurUserName() && handleBlurEmail() && handleBlurPasswd() && handleBlurRePasswd()) {
+      resultJson = {
+        name: name,
+        userName: userName,
+        email: email,
+        password: passwd,
+        passwordConfirmation: rePasswd
+      }
+
+      console.log(JSON.stringify(resultJson));
+    }
+  };
 
   //   Name
   const handleInputName = (e) => {
@@ -25,6 +44,7 @@ export default function Form() {
       nameValidation.classList.remove("green");
     } else {
       nameValidation.classList.remove("opacity1");
+      return true
     }
   };
 
@@ -40,6 +60,7 @@ export default function Form() {
       userNameValidation.classList.remove("green");
     } else {
       userNameValidation.classList.remove("opacity1");
+      return true
     }
   };
 
@@ -59,6 +80,7 @@ export default function Form() {
       emailValidation.classList.remove("green");
     } else {
       emailValidation.classList.remove("opacity1");
+      return true
     }
   };
 
@@ -98,6 +120,7 @@ export default function Form() {
       passwdValidation.classList.remove("green");
     } else {
       passwdValidation.classList.remove("opacity1");
+      return true
     }
 
     if (passwd !== rePasswd) {
@@ -125,6 +148,7 @@ export default function Form() {
       rePasswdValidation.classList.remove("green");
     } else {
       rePasswdValidation.classList.remove("opacity1");
+      return true
     }
   };
 
@@ -154,7 +178,7 @@ export default function Form() {
               onBlur={handleBlurName}
             />
             <p id="validationName" className="validationText">
-              Validation
+              *Valid name
             </p>
           </div>
           <div className="formItem">
@@ -173,7 +197,7 @@ export default function Form() {
               onBlur={handleBlurUserName}
             />
             <p id="validationUserName" className="validationText">
-              Validation
+              *Valid user name
             </p>
           </div>
           <div className="formItem">
@@ -192,7 +216,7 @@ export default function Form() {
               onBlur={handleBlurEmail}
             />
             <p id="validationEmail" className="validationText">
-              Validation
+              *Valid email
             </p>
           </div>
           <div className="formItem">
@@ -226,7 +250,7 @@ export default function Form() {
               )}
             </div>
             <p id="validationPasswd" className="validationText">
-              Validation
+              *Valid password
             </p>
           </div>
           <div className="formItem">
@@ -260,7 +284,7 @@ export default function Form() {
               )}
             </div>
             <p id="validationRePasswd" className="validationText">
-              Validation
+              *Password confirmation match to password
             </p>
           </div>
           <button onClick={handleSubmit} type="submit" className="formBtn">

@@ -1,36 +1,35 @@
-.formWrapper{
+.formWrapper {
     display: flex;
-    padding: 64px 12px 64px 64px;
+    padding: 16px 12px 16px 64px;
     background: #fff;
     border-radius: 16px;
     box-shadow: 1px 4px 16px 0px #00000069;
-    min-width: 700px;
+    width: 700px;
 }
 
 .formContent {
     flex: 1;
 }
 
-.formHeading{
-    font-size: 2.4rem;
+.formHeading {
+    font-size: 2rem;
     font-weight: 600;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
     animation: changeColor 1.5s ease infinite;
 }
 
-.formLabel{
+.formLabel {
     display: block;
-    margin-bottom: 8px;
     font-size: 1.1rem;
     color: #727272;
     letter-spacing: 1px;
 }
 
-.formLabel:focus{
+.formLabel:focus {
     color: #000;
 }
 
-.formInput{
+.formInput {
     border: none;
     border-bottom: 1px solid rgb(195, 195, 195);
     outline: none;
@@ -41,40 +40,38 @@
     transition: all 0.2s ease-in-out;
 }
 
-.formInput:focus{
+.formInput:focus {
     color: #000;
     border-bottom: 1px solid #000;
 }
 
-.formInput::placeholder{
+.formInput::placeholder {
     transition: all 0.2s linear;
 }
 
-.formInput:focus::placeholder{
+.formInput:focus::placeholder {
     color: black;
 }
 
-.formItem{
+.formItem {
     margin-bottom: 8px;
 }
 
 .validationText {
     font-size: 0.8rem;
-    color: red;
-    margin-top: 2px;
     opacity: 0;
     transition: all 0.3s ease-in-out;
 }
 
-#validationPasswd{
+#validationPasswd {
     min-height: 29px;
 }
 
-#validationRePasswd{
+#validationRePasswd {
     min-height: 29px;
 }
 
-.formPassWd{
+.formPassWd {
     position: relative;
 }
 
@@ -87,7 +84,7 @@
     cursor: pointer;
 }
 
-.formBtn{
+.formBtn {
     background: conic-gradient(at 125% 180%, #b78cf7, #ff7c94, #ffcf0d, #ff7c94, #b78cf7);
     outline: none;
     border: none;
@@ -95,31 +92,31 @@
     font-size: 1rem;
     font-weight: 700;
     border-radius: 10px;
-    margin: 12px 0 24px;
+    margin: 4px 0 12px;
     letter-spacing: 1px;
     cursor: pointer;
     color: #fff;
     transition: all .3s linear;
 }
 
-.formBtn:hover{
+.formBtn:hover {
     background: conic-gradient(at 125% 50%, #b78cf7, #ff7c94, #ffcf0d, #ff7c94, #b78cf7);
 }
 
-.signInRcm{
-    font-size: 1.1rem;
+.signInRcm {
+    font-size: 1rem;
 }
 
 .signInRcm a {
     color: #ff8a7d;
 }
 
-.formImgWrapper{
+.formImgWrapper {
     display: flex;
     overflow: hidden;
 }
 
-.formImg{
+.formImg {
     width: 300px;
     object-fit: cover;
     margin: auto;
@@ -130,34 +127,34 @@
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(359deg);
     }
 }
 
-@keyframes changeColor{
-    0%{
+@keyframes changeColor {
+    0% {
         color: #f67ea0
     }
-    25%{
+
+    25% {
         color: #e283bc;
     }
-    50%{
+
+    50% {
         color: #ff897f;
     }
-    100%{
+
+    100% {
         color: #ffa64e;
     }
 }
 
-.opacity1{
+.opacity1 {
     opacity: 1;
 }
 
-.red{
+.red {
     color: #f03a3a;
-}
-
-.green{
-    color: #18af0c;
 }
