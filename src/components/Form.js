@@ -85,6 +85,8 @@ export default function Form() {
   };
   const handleBlurPasswd = () => {
     const passwdValidation = document.getElementById("validationPasswd");
+    const rePasswdValidation = document.getElementById("validationRePasswd");
+
     if (passwd === "") {
       passwdValidation.innerText = "*Please enter your password";
       passwdValidation.classList.add("opacity1", "red");
@@ -96,6 +98,13 @@ export default function Form() {
       passwdValidation.classList.remove("green");
     } else {
       passwdValidation.classList.remove("opacity1");
+    }
+
+    if (passwd !== rePasswd) {
+      rePasswdValidation.innerText =
+        "*Password confirmation is not match to password. Please check it";
+      rePasswdValidation.classList.add("opacity1", "red");
+      rePasswdValidation.classList.remove("green");
     }
   };
 

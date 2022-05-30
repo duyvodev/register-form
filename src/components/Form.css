@@ -66,6 +66,14 @@
     transition: all 0.3s ease-in-out;
 }
 
+#validationPasswd{
+    min-height: 29px;
+}
+
+#validationRePasswd{
+    min-height: 29px;
+}
+
 .formPassWd{
     position: relative;
 }
