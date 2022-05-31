@@ -1,0 +1,24 @@
+.formHeading {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    animation: changeColor 1.5s ease infinite;
+}
+
+@keyframes changeColor {
+    0% {
+        color: #f67ea0
+    }
+
+    25% {
+        color: #e283bc;
+    }
+
+    50% {
+        color: #ff897f;
+    }
+
+    100% {
+        color: #ffa64e;
+    }
+}

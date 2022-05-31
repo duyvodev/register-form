@@ -1,0 +1,21 @@
+.validationText {
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+#validationPasswd {
+    min-height: 29px;
+}
+
+#validationRePasswd {
+    min-height: 29px;
+}
+
+.opacity1 {
+    opacity: 1;
+}
+
+.red {
+    color: #f03a3a;
+}

@@ -1,0 +1,16 @@
+
+.formLabel {
+    display: block;
+    font-size: 1.1rem;
+    color: #727272;
+    letter-spacing: 1px;
+}
+
+.formLabel:focus {
+    color: #000;
+}
+
+.formItem {
+    margin-bottom: 8px;
+}
+

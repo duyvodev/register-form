@@ -1,0 +1,42 @@
+.formWrapper {
+    display: flex;
+    padding: 16px 12px 16px 64px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 1px 4px 16px 0px #00000069;
+    width: 700px;
+}
+
+.formContent {
+    flex: 1;
+}
+
+.signInRcm {
+    font-size: 1rem;
+}
+
+.signInRcm a {
+    color: #ff8a7d;
+}
+
+.formImgWrapper {
+    display: flex;
+    overflow: hidden;
+}
+
+.formImg {
+    width: 300px;
+    object-fit: cover;
+    margin: auto;
+    animation: rotation 33s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}

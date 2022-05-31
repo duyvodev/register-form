@@ -1,0 +1,36 @@
+.formInput {
+    border: none;
+    border-bottom: 1px solid rgb(195, 195, 195);
+    outline: none;
+    padding: 6px 0;
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+    width: 100%;
+    transition: all 0.2s ease-in-out;
+}
+
+.formInput:focus {
+    color: #000;
+    border-bottom: 1px solid #000;
+}
+
+.formInput::placeholder {
+    transition: all 0.2s linear;
+}
+
+.formInput:focus::placeholder {
+    color: black;
+}
+
+.formPassWd {
+    position: relative;
+}
+
+.pw-toggle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    color: #727272;
+    cursor: pointer;
+}

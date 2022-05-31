@@ -1,0 +1,18 @@
+.formBtn {
+    background: conic-gradient(at 125% 180%, #b78cf7, #ff7c94, #ffcf0d, #ff7c94, #b78cf7);
+    outline: none;
+    border: none;
+    padding: 12px 36px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 10px;
+    margin: 4px 0 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    color: #fff;
+    transition: all .3s linear;
+}
+
+.formBtn:hover {
+    background: conic-gradient(at 125% 50%, #b78cf7, #ff7c94, #ffcf0d, #ff7c94, #b78cf7);
+}
