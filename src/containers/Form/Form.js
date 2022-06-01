@@ -5,6 +5,7 @@ import FormItem from "../../components/FormItem/FormItem";
 import Button from "../../components/Button/Button";
 import Loader from "../Loader/Loader";
 import { useGlobalData } from "../../components/GlobalDataContext/GlobalDataContext";
+import Notification from "../../components/Notification/Notification";
 
 export default function Form() {
   const [name, setName] = useState("");
@@ -176,6 +177,12 @@ export default function Form() {
     }
   };
 
+  // Hide notification when click on
+  const hideNotification = (e) => {
+    const notification = document.querySelector(".notificationWrapper")
+    notification.classList.remove("notificationDisplay")
+  }
+
   return (
     <>
       <form
@@ -305,7 +312,7 @@ export default function Form() {
         </div>
       </form>
       {loadingStatus && <Loader />}
-      {/* <Loader /> */}
+      <Notification type="success" msg="Register Successful!" handleOnClick={hideNotification} />
     </>
   );
 }

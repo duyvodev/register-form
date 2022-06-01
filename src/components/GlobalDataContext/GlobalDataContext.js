@@ -26,6 +26,12 @@ function GlobalDataProvider(props) {
       console.log("Fetch data: ");
       console.log(data);
       hideLoading();
+
+      const notification = document.querySelector(".notificationWrapper")
+      notification.classList.add("notificationDisplay")
+      setTimeout(() => {
+        notification.classList.remove("notificationDisplay")
+      }, 2000);
     }
     setUserDate(data);
   }
