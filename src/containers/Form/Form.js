@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.css";
 import FormHeader from "../../components/FormHeader/FormHeader";
 import FormItem from "../../components/FormItem/FormItem";
 import Button from "../../components/Button/Button";
 import Loader from "../Loader/Loader";
+import { useGlobalData } from "../../components/GlobalDataContext/GlobalDataContext";
 
 export default function Form() {
   const [name, setName] = useState("");
@@ -37,9 +38,11 @@ export default function Form() {
   const [rePassWdValidationColor, setRePassWdValidationColor] = useState("");
   const [rePassWdHidden, setRePassWdHidden] = useState(true);
 
+  const valueProvider = useGlobalData();
+  const { loadingStatus, fetchUserData } = valueProvider;
   //   Click button
   const handleSubmit = () => {
-    let resultJson = "";
+    // let resultJson = "";
     handleBlurName();
     handleBlurUserName();
     handleBlurEmail();
@@ -53,15 +56,7 @@ export default function Form() {
       handleBlurPasswd() &&
       handleBlurRePasswd()
     ) {
-      resultJson = {
-        name: name,
-        userName: userName,
-        email: email,
-        password: passwd,
-        passwordConfirmation: rePasswd,
-      };
-
-      console.log(JSON.stringify(resultJson));
+      fetchUserData();
     }
   };
 
@@ -309,7 +304,8 @@ export default function Form() {
           />
         </div>
       </form>
-      <Loader />
+      {loadingStatus && <Loader />}
+      {/* <Loader /> */}
     </>
   );
 }

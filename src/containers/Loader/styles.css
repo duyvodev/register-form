@@ -4,13 +4,20 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.404);
+    background: #fff;
+    opacity: 0.5;
+    transition: all 0.3s linear;
 }
 
 .loader{
-    background-image: url(../../assets/img/loader.gif);
+    background-image: url(https://media0.giphy.com/media/kUTME7ABmhYg5J3psM/giphy.gif?cid=ecf05e47jcswd0mv0cuzlhi0r37eyp42epk489tijqm4tlxb&rid=giphy.gif&ct=g);
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
     height: 100%;
+}
+
+.loaderDisplay{
+    opacity: 1;
+    z-index: 0;
 }
