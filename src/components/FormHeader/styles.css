@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&display=swap');
+
 .formHeading {
-    font-size: 2rem;
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    text-shadow: 3px 1px black;
     font-weight: 600;
     margin-bottom: 12px;
     animation: changeColor 1.5s ease infinite;
@@ -7,18 +11,22 @@
 
 @keyframes changeColor {
     0% {
-        color: #f67ea0
+        color: rgb(0, 0, 0)
     }
 
     25% {
-        color: #e283bc;
+        color: rgb(146, 146, 146);
     }
 
     50% {
-        color: #ff897f;
+        color: rgba(226, 226, 226, 0.849)
+    }
+
+    75% {
+        color: rgb(146, 146, 146);
     }
 
     100% {
-        color: #ffa64e;
+        color: rgb(0, 0, 0)
     }
 }

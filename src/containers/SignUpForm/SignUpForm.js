@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom"
 import "./styles.css";
 import FormHeader from "../../components/FormHeader/FormHeader";
 import FormItem from "../../components/FormItem/FormItem";
 import Button from "../../components/Button/Button";
+import FormWrapper from "../../components/FormWrapper/FormWrapper";
 import Loader from "../Loader/Loader";
 import { useGlobalData } from "../../components/GlobalDataContext/GlobalDataContext";
 import Notification from "../../components/Notification/Notification";
@@ -186,13 +187,8 @@ export default function Form() {
 
   return (
     <>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-        className="formWrapper"
-      >
-        <div className="formContent">
+      <FormWrapper>
+        <div className="formSignUpContent">
           <FormHeader value="Sign up"></FormHeader>
           <FormItem
             labelValue="Name"
@@ -304,14 +300,14 @@ export default function Form() {
             Already have an account? <Link to="/sign-in-form">Sign in</Link>
           </p>
         </div>
-        <div className="formImgWrapper">
+        <div className="formSignUpImgWrapper">
           <img
-            src="https://static.vecteezy.com/system/resources/previews/003/809/771/original/woman-in-office-clothes-working-on-laptop-illustration-in-flat-cartoon-style-vector.jpg"
+            src="https://i.pinimg.com/564x/c2/a8/5e/c2a85edc73864572f76a386050b88a0a.jpg"
             alt="img"
-            className="formImg"
+            className="formSignUpImg"
           />
         </div>
-      </form>
+      </FormWrapper>
       {loadingStatus && <Loader />}
       <Notification type="success" msg="Register Successful!" handleOnClick={hideNotification} />
     </>

@@ -1,23 +1,23 @@
-.loaderOverlay{
+.loaderOverlay {
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    background: #fff;
-    opacity: 0.5;
+    background: #000;
+    opacity: 0.9;
     transition: all 0.3s linear;
 }
 
-.loader{
-    background-image: url(https://media0.giphy.com/media/kUTME7ABmhYg5J3psM/giphy.gif?cid=ecf05e47jcswd0mv0cuzlhi0r37eyp42epk489tijqm4tlxb&rid=giphy.gif&ct=g);
+.loader {
+    background-image: url(https://media2.giphy.com/media/TFIqDNLjxOxQUECHxZ/giphy.gif?cid=790b76110cf9e470aca25d6b7538f8a6d289b0deaa750d7e&rid=giphy.gif&ct=g);
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
     height: 100%;
 }
 
-.loaderDisplay{
+.loaderDisplay {
     opacity: 1;
     z-index: 0;
 }

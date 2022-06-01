@@ -7,10 +7,9 @@ function App() {
   return (
     <div className="app">
       <Routes>
-        <Route path="/" element={<SignUpForm />} />
+        <Route path="/register-form" element={<SignUpForm />} />
         <Route path="/sign-in-form" element={<SignInForm />} />
       </Routes>
-
     </div>
   );
 }

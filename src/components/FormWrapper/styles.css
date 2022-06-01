@@ -1,0 +1,9 @@
+.formWrapper {
+    display: flex;
+    padding: 16px 12px 16px 64px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 1px 4px 16px 0px #00000069;
+    width: 700px;
+    min-height: 620px;
+}

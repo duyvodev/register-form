@@ -1,16 +1,17 @@
-
 .formLabel {
     display: block;
     font-size: 1.1rem;
+    font-weight: 500;
     color: #727272;
     letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }
 
-.formLabel:focus {
+.formLabel:hover {
     color: #000;
 }
 
 .formItem {
     margin-bottom: 8px;
 }
-
