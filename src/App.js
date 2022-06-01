@@ -1,14 +1,17 @@
-import Form from "./containers/Form/Form";
+import SignUpForm from "./containers/SignUpForm/SignUpForm";
+import SignInForm from "./containers/SignInForm/SignInForm";
+import { Routes, Route, Link } from "react-router-dom"
 import "./App.css";
-import { GlobalDataProvider } from "./components/GlobalDataContext/GlobalDataContext";
 
 function App() {
   return (
-    <GlobalDataProvider>
-      <div className="app">
-        <Form />
-      </div>
-    </GlobalDataProvider>
+    <div className="app">
+      <Routes>
+        <Route path="/" element={<SignUpForm />} />
+        <Route path="/sign-in-form" element={<SignInForm />} />
+      </Routes>
+
+    </div>
   );
 }
 

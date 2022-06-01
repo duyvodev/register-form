@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom"
 import "./styles.css";
 import FormHeader from "../../components/FormHeader/FormHeader";
 import FormItem from "../../components/FormItem/FormItem";
@@ -300,7 +301,7 @@ export default function Form() {
           />
           <Button handleOnClick={handleSubmit} value="Sign up" />
           <p className="signInRcm">
-            Already have an account? <a href="#">Sign in</a>
+            Already have an account? <Link to="/sign-in-form">Sign in</Link>
           </p>
         </div>
         <div className="formImgWrapper">
