@@ -42,7 +42,7 @@ export default function Form() {
   const [rePassWdHidden, setRePassWdHidden] = useState(true);
 
   const valueProvider = useGlobalData();
-  const { loadingSignUpStatus, fetchUserData } = valueProvider;
+  const { loadingStatus, fetchUserData } = valueProvider;
   //   Click button
   const handleSubmit = () => {
     // let resultJson = "";
@@ -308,7 +308,7 @@ export default function Form() {
           />
         </div>
       </FormWrapper>
-      {loadingSignUpStatus && <Loader />}
+      {loadingStatus && <Loader />}
       <Notification type="success" msg="Register Successful!" handleOnClick={hideNotification} />
     </>
   );

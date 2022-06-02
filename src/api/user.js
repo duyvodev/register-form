@@ -10,25 +10,37 @@ export default {
     });
   },
 
-  // login(user){
-  //   if(user.userName === "admin" && user.passwd === "123123asd"){
-  //     return {
-  //       "status": 200,
-  //       "role": "admin",
-  //       "token": "ADMIN999666111"
-  //     }
-  //   }
-  //   else if(user.userName === "user123" && user.passwd === "asdasd123"){
-  //     return {
-  //       "status": 200,
-  //       "role": "user",
-  //       "token": "USER91239912390"
-  //     }
-  //   }
-  //   else{
-  //     return {
-  //       "status": 401,
-  //     }
-  //   }
-  // }
+  async login(userName, userPasswd) {
+    if (userName === "user123" && userPasswd === "asdasd123") {
+      return new Promise((rs) => {
+        setTimeout(() => {
+          rs({
+            "status": 200,
+            "role": "user",
+            "token": "USER91239912390"
+          })
+        }, 2000)
+      })
+    }
+    else if (userName === "admin" && userPasswd === "123123asd") {
+      return new Promise((rs) => {
+        setTimeout(() => {
+          rs({
+            "status": 200,
+            "role": "admin",
+            "token": "ADMIN9123970928"
+          })
+        }, 2000)
+      })
+    }
+    else {
+      return new Promise((rs) => {
+        setTimeout(() => {
+          rs({
+            "status": 401,
+          })
+        }, 2000)
+      })
+    }
+  }
 }

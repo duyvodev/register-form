@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./styles.css"
 import FormWrapper from "../../components/FormWrapper/FormWrapper";
@@ -8,7 +8,6 @@ import Button from "../../components/Button/Button";
 import Notification from "../../components/Notification/Notification";
 import Loader from "../Loader/Loader";
 import { useGlobalData } from "../../components/GlobalDataContext/GlobalDataContext";
-
 
 export default function SignUpForm() {
     let navigate = useNavigate();
@@ -26,8 +25,9 @@ export default function SignUpForm() {
     const [passWdValidationColor, setPassWdValidationColor] = useState("");
     const [passWdHidden, setPassWdHidden] = useState(true);
 
+    const [errorMsg, setErrorMsg] = useState(false)
     // LOCAL STORAGE ==> Save users' data
-    const {loadingSignInStatus, getToken, changeLoadingSignUpStatus} = useGlobalData()
+    const { loadingStatus, getToken, userToken } = useGlobalData()
     //   Click button
     const handleSubmit = () => {
         // let resultJson = "";
@@ -36,26 +36,24 @@ export default function SignUpForm() {
 
         if (
             handleBlurUserName() &&
-            handleBlurPasswd() 
+            handleBlurPasswd()
         ) {
-            const user = {
-                userName,
-                passwd
-            }
-            const userData = getToken(user)
-            
-            if(userData.status === 401){
-                navigate("/404")
-            }
-            else if(userData.role === "user"){
-                navigate("/dashboard")
-            }
-            else if(userData.role === "admin"){
-                navigate("/setting")
-            }
-       }
+            getToken(userName, passwd)
+        }
     };
 
+    useEffect(() => {
+        if (userToken.token === "USER91239912390") {
+            navigate("/dashboard")
+        }
+        else if (userToken.token === "ADMIN9123970928") {
+            navigate("/setting")
+        }
+
+        if (userToken.status === 401) {
+            setErrorMsg(true)
+        }
+    }, [userToken])
 
     //   UserName
     const handleInputUserName = (e) => {
@@ -82,10 +80,10 @@ export default function SignUpForm() {
     };
 
     // Hide notification when click on
-    // const hideNotification = (e) => {
-    //     const notification = document.querySelector(".notificationWrapper")
-    //     notification.classList.remove("notificationDisplay")
-    // }
+    const hideNotification = (e) => {
+        const notification = document.querySelector(".notificationWrapper")
+        notification.classList.remove("notificationDisplay")
+    }
 
     //   Password
     const handleInputPasswd = (e) => {
@@ -170,8 +168,8 @@ export default function SignUpForm() {
                     />
                 </div>
             </FormWrapper>
-            {loadingSignInStatus && <Loader />}
-            {/* <Notification type="success" msg="Register Successful!" handleOnClick={hideNotification} /> */}
+            {loadingStatus && <Loader />}
+            {errorMsg || <Notification type="error" msg="Account doesn't exist!" handleOnClick={hideNotification} />}
         </>
     )
 }

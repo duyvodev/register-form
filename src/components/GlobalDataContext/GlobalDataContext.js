@@ -2,43 +2,29 @@ import React, { useContext, useEffect, useState } from "react";
 import api from "../../api/user";
 
 const GlobalDataContext = React.createContext();
+// const userStore = JSON.parse(localStorage.getItem("userToken")) || {}
 
 function GlobalDataProvider(props) {
-  const [loadingSignUpStatus, setLoadingSignUpStatus] = useState(false);
-  const [loadingSignInStatus, setLoadingSignInStatus] = useState(false);
-  const [userData, setUserDate] = useState({});
-
-  const changeLoadingSignUpStatus = (status) => {
-    setLoadingSignInStatus(status)
-  }
+  const [loadingStatus, setLoadingStatus] = useState(false);
+  const [userData, setUserData] = useState({});
+  const [userToken, setUserToken] = useState({});
 
   const hideLoading = () => {
-    setLoadingSignUpStatus(false);
+    setLoadingStatus(false);
   };
   const showLoading = () => {
-    setLoadingSignUpStatus(true);
+    setLoadingStatus(true);
   };
 
-  function getToken(user){
-    if(user.userName === "admin" && user.passwd === "123123asd"){
-      return {
-        "status": 200,
-        "role": "admin",
-        "token": "ADMIN999666111"
-      }
+  async function getToken(userName, userPasswd) {
+    showLoading()
+    const rs = await api.login(userName, userPasswd)
+    if (rs) {
+      hideLoading()
     }
-    else if(user.userName === "user123" && user.passwd === "asdasd123"){
-      return {
-        "status": 200,
-        "role": "user",
-        "token": "USER91239912390"
-      }
-    }
-    else{
-      return {
-        "status": 401,
-      }
-    }
+    localStorage.setItem("userToken", JSON.stringify({ ...rs }))
+    setUserToken(rs)
+    console.log(rs)
   }
 
   async function fetchUserData() {
@@ -55,15 +41,14 @@ function GlobalDataProvider(props) {
         notification.classList.remove("notificationDisplay")
       }, 2000);
     }
-    setUserDate(data);
+    setUserData(data);
   }
 
   const providerValues = {
-    loadingSignUpStatus,
-    loadingSignInStatus,
+    loadingStatus,
     fetchUserData,
-    changeLoadingSignUpStatus,
-    getToken
+    getToken,
+    userToken
   };
 
   return (
