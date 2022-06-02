@@ -1,6 +1,6 @@
 import SignUpForm from "./containers/SignUpForm/SignUpForm";
 import SignInForm from "./containers/SignInForm/SignInForm";
-import { Routes, Route, Link } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import "./App.css";
 
 function App() {
