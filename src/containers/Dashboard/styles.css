@@ -1,0 +1,14 @@
+.dashboard{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.dashboardWords{
+    margin: auto;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 16px;
+    font-size: 5rem;
+    text-shadow: 8px 2px black;
+}

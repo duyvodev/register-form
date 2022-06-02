@@ -4,20 +4,42 @@ import api from "../../api/user";
 const GlobalDataContext = React.createContext();
 
 function GlobalDataProvider(props) {
-  const [loadingStatus, setLoadingStatus] = useState(false);
+  const [loadingSignUpStatus, setLoadingSignUpStatus] = useState(false);
+  const [loadingSignInStatus, setLoadingSignInStatus] = useState(false);
   const [userData, setUserDate] = useState({});
 
+  const changeLoadingSignUpStatus = (status) => {
+    setLoadingSignInStatus(status)
+  }
+
   const hideLoading = () => {
-    setLoadingStatus(false);
+    setLoadingSignUpStatus(false);
   };
   const showLoading = () => {
-    setLoadingStatus(true);
+    setLoadingSignUpStatus(true);
   };
 
-  //   useEffect(() => {
-  //     fetchUserData();
-  //     // eslint-disable-next-line
-  //   }, []);
+  function getToken(user){
+    if(user.userName === "admin" && user.passwd === "123123asd"){
+      return {
+        "status": 200,
+        "role": "admin",
+        "token": "ADMIN999666111"
+      }
+    }
+    else if(user.userName === "user123" && user.passwd === "asdasd123"){
+      return {
+        "status": 200,
+        "role": "user",
+        "token": "USER91239912390"
+      }
+    }
+    else{
+      return {
+        "status": 401,
+      }
+    }
+  }
 
   async function fetchUserData() {
     showLoading();
@@ -36,17 +58,12 @@ function GlobalDataProvider(props) {
     setUserDate(data);
   }
 
-  // const setField = (field, val) => {
-  //   const _value = { ...value };
-  //   _value[field] = val;
-  //   setValue(_value);
-  // };
-
   const providerValues = {
-    loadingStatus,
+    loadingSignUpStatus,
+    loadingSignInStatus,
     fetchUserData,
-    // hideLoading,
-    // showLoading,
+    changeLoadingSignUpStatus,
+    getToken
   };
 
   return (

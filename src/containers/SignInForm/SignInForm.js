@@ -1,13 +1,18 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./styles.css"
 import FormWrapper from "../../components/FormWrapper/FormWrapper";
 import FormHeader from "../../components/FormHeader/FormHeader";
 import FormItem from "../../components/FormItem/FormItem";
 import Button from "../../components/Button/Button";
 import Notification from "../../components/Notification/Notification";
+import Loader from "../Loader/Loader";
+import { useGlobalData } from "../../components/GlobalDataContext/GlobalDataContext";
+
 
 export default function SignUpForm() {
+    let navigate = useNavigate();
+
     const [userName, setUserName] = useState("");
     const [passwdType, setPasswdType] = useState("password");
     const [passwd, setPasswd] = useState("");
@@ -21,6 +26,8 @@ export default function SignUpForm() {
     const [passWdValidationColor, setPassWdValidationColor] = useState("");
     const [passWdHidden, setPassWdHidden] = useState(true);
 
+    // LOCAL STORAGE ==> Save users' data
+    const {loadingSignInStatus, getToken, changeLoadingSignUpStatus} = useGlobalData()
     //   Click button
     const handleSubmit = () => {
         // let resultJson = "";
@@ -29,11 +36,26 @@ export default function SignUpForm() {
 
         if (
             handleBlurUserName() &&
-            handleBlurPasswd()
+            handleBlurPasswd() 
         ) {
-            //   fetchUserData();
-        }
+            const user = {
+                userName,
+                passwd
+            }
+            const userData = getToken(user)
+            
+            if(userData.status === 401){
+                navigate("/404")
+            }
+            else if(userData.role === "user"){
+                navigate("/dashboard")
+            }
+            else if(userData.role === "admin"){
+                navigate("/setting")
+            }
+       }
     };
+
 
     //   UserName
     const handleInputUserName = (e) => {
@@ -148,7 +170,7 @@ export default function SignUpForm() {
                     />
                 </div>
             </FormWrapper>
-            {/* {loadingStatus && <Loader />} */}
+            {loadingSignInStatus && <Loader />}
             {/* <Notification type="success" msg="Register Successful!" handleOnClick={hideNotification} /> */}
         </>
     )
