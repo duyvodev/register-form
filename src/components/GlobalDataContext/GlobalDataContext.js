@@ -30,7 +30,8 @@ function GlobalDataProvider(props) {
       }
     }
     localStorage.setItem("userToken", JSON.stringify({ ...rs }));
-    setUserToken(rs);
+    setUserToken({ ...rs });
+    return JSON.parse(localStorage.getItem("userToken"));
   }
 
   async function fetchUserData() {
@@ -46,8 +47,8 @@ function GlobalDataProvider(props) {
       setTimeout(() => {
         notification.classList.remove("notificationDisplay");
       }, 2000);
+      setUserData(data);
     }
-    setUserData(data);
   }
 
   const providerValues = {

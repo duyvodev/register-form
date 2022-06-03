@@ -2,6 +2,7 @@
     width: 100vw;
     height: 100vh;
     display: flex;
+    position: relative;
 }
 
 .dashboardWords{
@@ -11,23 +12,4 @@
     letter-spacing: 16px;
     font-size: 5rem;
     text-shadow: 8px 2px black;
-}
-
-.dashboardNav{
-    position: absolute;
-    top: 36px;
-    left: 60px;
-    display: flex;
-    gap: 30px;
-}
-
-.dashboardItems{
-    display: inline-block;
-}
-
-.dashboardLink{
-    text-decoration: none;
-    text-transform: capitalize;
-    color: white;
-    letter-spacing: 2px;
 }

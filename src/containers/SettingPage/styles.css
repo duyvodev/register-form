@@ -1,10 +1,11 @@
-.SettingWrapper{
+.settingWrapper{
     width: 100vw;
     height: 100vh;
     display: flex;
+    position: relative;
 }
 
-.SettingWords{
+.settingWords{
     margin: auto;
     text-transform: uppercase;
     color: #fff;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./styles.css";
 import FormWrapper from "../../components/FormWrapper/FormWrapper";
 import FormHeader from "../../components/FormHeader/FormHeader";
@@ -26,7 +26,7 @@ export default function SignUpForm() {
   const [passWdHidden, setPassWdHidden] = useState(true);
 
   // LOCAL STORAGE ==> Save users' data
-  const { loadingStatus, getToken, userToken } = useGlobalData();
+  const { loadingStatus, getToken } = useGlobalData();
   //   Click button
   const handleSubmit = () => {
     // let resultJson = "";
@@ -34,17 +34,13 @@ export default function SignUpForm() {
     handleBlurPasswd();
 
     if (handleBlurUserName() && handleBlurPasswd()) {
-      getToken(userName, passwd);
+      getToken(userName, passwd).then((userToken) => {
+        if (userToken.role === "admin" || userToken.role === "user") {
+          navigate("/dashboard");
+        }
+      });
     }
   };
-
-  useEffect(() => {
-    if (userToken.token === "USER91239912390") {
-      navigate("/dashboard");
-    } else if (userToken.token === "ADMIN9123970928") {
-      navigate("/dashboard");
-    }
-  }, [userToken]);
 
   //   UserName
   const handleInputUserName = (e) => {

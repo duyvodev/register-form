@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 export default function SettingPage() {
   return (
     <>
-      <div className="SettingWrapper">
+      <div className="settingWrapper">
         {/* <nav className="settingNav">
                     <li className="settingNavItems">
                         <Link to=""></Link>
                     </li>
                 </nav> */}
-        <h1 className="SettingWords">setting</h1>
+        <h1 className="settingWords">setting</h1>
       </div>
     </>
   );

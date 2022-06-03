@@ -1,28 +1,21 @@
 import "./styles.css";
-import { Link } from "react-router-dom";
-import { useGlobalData } from "../../components/GlobalDataContext/GlobalDataContext";
+import { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Dashboard() {
-  const { userToken } = useGlobalData();
-  const token = userToken.token;
-  console.log(token);
+  let navigate = useNavigate();
+  let location = useLocation();
+  const userToken = JSON.parse(localStorage.getItem("userToken"));
+
+  useEffect(() => {
+    if (userToken) {
+      navigate("/dashboard");
+    }
+  }, [location.pathname]);
+
   return (
     <>
       <div className="dashboard">
-        <nav className="dashboardNav">
-          {token === "ADMIN9123970928" ? (
-            <li className="dashboardItems">
-              <Link className="dashboardLink" to="/setting">
-                setting
-              </Link>
-            </li>
-          ) : null}
-          <li className="dashboardItems">
-            <Link className="dashboardLink" to="/sign-in-form">
-              logout
-            </Link>
-          </li>
-        </nav>
         <h1 className="dashboardWords">dashboard</h1>
       </div>
     </>
