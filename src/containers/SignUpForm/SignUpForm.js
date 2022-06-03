@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import "./styles.css";
 import FormHeader from "../../components/FormHeader/FormHeader";
 import FormItem from "../../components/FormItem/FormItem";
@@ -181,9 +181,9 @@ export default function Form() {
 
   // Hide notification when click on
   const hideNotification = (e) => {
-    const notification = document.querySelector(".notificationWrapper")
-    notification.classList.remove("notificationDisplay")
-  }
+    const notification = document.querySelector(".notificationWrapper");
+    notification.classList.remove("notificationDisplay");
+  };
 
   return (
     <>
@@ -309,7 +309,11 @@ export default function Form() {
         </div>
       </FormWrapper>
       {loadingStatus && <Loader />}
-      <Notification type="success" msg="Register Successful!" handleOnClick={hideNotification} />
+      <Notification
+        type="success"
+        msg="Register Successful!"
+        handleOnClick={hideNotification}
+      />
     </>
   );
 }

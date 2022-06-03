@@ -17,14 +17,20 @@ function GlobalDataProvider(props) {
   };
 
   async function getToken(userName, userPasswd) {
-    showLoading()
-    const rs = await api.login(userName, userPasswd)
+    showLoading();
+    const rs = await api.login(userName, userPasswd);
     if (rs) {
-      hideLoading()
+      hideLoading();
+      if (rs.status === 401) {
+        const notification = document.querySelector(".notificationWrapper");
+        notification.classList.add("notificationDisplay");
+        setTimeout(() => {
+          notification.classList.remove("notificationDisplay");
+        }, 2000);
+      }
     }
-    localStorage.setItem("userToken", JSON.stringify({ ...rs }))
-    setUserToken(rs)
-    console.log(rs)
+    localStorage.setItem("userToken", JSON.stringify({ ...rs }));
+    setUserToken(rs);
   }
 
   async function fetchUserData() {
@@ -35,10 +41,10 @@ function GlobalDataProvider(props) {
       console.log(data);
       hideLoading();
 
-      const notification = document.querySelector(".notificationWrapper")
-      notification.classList.add("notificationDisplay")
+      const notification = document.querySelector(".notificationWrapper");
+      notification.classList.add("notificationDisplay");
       setTimeout(() => {
-        notification.classList.remove("notificationDisplay")
+        notification.classList.remove("notificationDisplay");
       }, 2000);
     }
     setUserData(data);
@@ -48,7 +54,7 @@ function GlobalDataProvider(props) {
     loadingStatus,
     fetchUserData,
     getToken,
-    userToken
+    userToken,
   };
 
   return (
