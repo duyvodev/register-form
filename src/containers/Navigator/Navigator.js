@@ -18,15 +18,16 @@ export default function Navigator() {
             </Link>
           </li>
         ) : null}
-        <li className="navigatorItems">
-          <Link
-            onClick={handleOnClick}
-            className="navigatorLink"
-            to="/dashboard"
-          >
-            dashboard
-          </Link>
-        </li>
+        {(userData.role === "admin" || userData.role === "user") ?
+          (<li className="navigatorItems">
+            <Link
+              onClick={handleOnClick}
+              className="navigatorLink"
+              to="/dashboard"
+            >
+              dashboard
+            </Link>
+          </li>) : null}
         <li className="navigatorItems">
           <Link
             onClick={handleOnClick}

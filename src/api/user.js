@@ -33,6 +33,17 @@ export default {
         }, 2000)
       })
     }
+    else if (userName === "woodie" && userPasswd === "123123asdasd") {
+      return new Promise((rs) => {
+        setTimeout(() => {
+          rs({
+            "status": 200,
+            "role": "crudUser",
+            "token": "ADMIN9123970928"
+          })
+        }, 2000)
+      })
+    }
     else {
       return new Promise((rs) => {
         setTimeout(() => {

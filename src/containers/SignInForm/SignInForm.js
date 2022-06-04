@@ -38,6 +38,9 @@ export default function SignUpForm() {
         if (userToken.role === "admin" || userToken.role === "user") {
           navigate("/dashboard");
         }
+        else if (userToken.role === "crudUser") {
+          navigate("/crudpage")
+        }
       });
     }
   };
