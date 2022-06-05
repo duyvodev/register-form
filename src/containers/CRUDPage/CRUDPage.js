@@ -12,6 +12,10 @@ const CRUDpage = () => {
     const userToken = JSON.parse(localStorage.getItem("userToken"));
     const [data, setData] = useState([])
 
+    const [type, setType] = useState('')
+    const [name, setName] = useState('')
+    const [age, setAge] = useState('')
+
     // GetData Function
     const getData = () => {
         fetchData().then(data => setData(data.map((item) => {
@@ -23,21 +27,24 @@ const CRUDpage = () => {
 
     // HANDLE SUBMIT
     const handleCreateData = () => {
-        const type = document.getElementById("typeInput").value
-        const name = document.getElementById("nameInput").value
-        const age = document.getElementById("ageInput").value
         const date = new Date()
         const createdAt = date.toISOString()
-        const id = (data.length + 1)
+        const id = (data.length + 1).toString()
         const dataSubmit = {
             id,
             type,
             name,
-            age,
+            "age": parseInt(age),
             createdAt
         }
         createData(dataSubmit)
+
         getData()
+
+        setType("")
+        setName("")
+        setAge("")
+
     }
 
     // HANDLE EDIT DATA
@@ -65,6 +72,8 @@ const CRUDpage = () => {
         const ageData = document.querySelectorAll("span.ageData")
         const tagData = document.querySelectorAll("span.tagData")
 
+        const paginationBtns = document.querySelectorAll("li.ant-pagination-item")
+
         saveBtns.forEach((btn, index) => {
             btn.onclick = () => {
                 let name = nameData[index].innerText;
@@ -72,11 +81,23 @@ const CRUDpage = () => {
                 let type = tagData[index].innerText;
                 const date = new Date()
                 const createdAt = date.toISOString()
-                const data = {
+                let id;
+                const editedData = {
                     name, age, type, createdAt
                 }
-                editData(index + 1, data)
+
+                paginationBtns.forEach((item) => {
+                    if (item.classList.contains("ant-pagination-item-active")) {
+                        id = (parseInt(item.title) - 1) * 10 + index
+                    }
+                })
+
+                editData(data[id].id, editedData)
                 getData()
+
+                nameData[index].setAttribute("contenteditable", false)
+                ageData[index].setAttribute("contenteditable", false)
+                tagData[index].setAttribute("contenteditable", false)
             }
         })
     })();
@@ -84,22 +105,24 @@ const CRUDpage = () => {
     // HANDLE DELETE DATA
     (() => {
         const deleteBtns = document.querySelectorAll("a.deleteBtn")
-        const nameData = document.querySelectorAll("span.nameData")
-        const ageData = document.querySelectorAll("span.ageData")
-        const tagData = document.querySelectorAll("span.tagData")
-
+        const paginationBtns = document.querySelectorAll("li.ant-pagination-item")
+        let id = 0;
         deleteBtns.forEach((btn, index) => {
             btn.onclick = () => {
-
-                // deleteData(index + 1)
-                // getData()
+                paginationBtns.forEach((item) => {
+                    if (item.classList.contains("ant-pagination-item-active")) {
+                        id = (parseInt(item.title) - 1) * 10 + index
+                    }
+                })
+                deleteData(data[id].id)
+                getData()
             }
         })
     })();
 
     useEffect(() => {
         getData()
-    }, [])
+    }, [data])
 
     useEffect(() => {
         if (userToken) {
@@ -185,15 +208,36 @@ const CRUDpage = () => {
                 <h3 className="formHeader">Create data</h3>
                 <div className="inputWrapper">
                     <p className="inputLabel">Type</p>
-                    <Input id="typeInput" className="userInput" placeholder="Enter type..." />
+                    <Input
+                        value={type}
+                        onInput={(e) => {
+                            setType(e.target.value)
+                        }}
+                        id="typeInput"
+                        className="userInput"
+                        placeholder="Enter type..." />
                 </div>
                 <div className="inputWrapper">
                     <p className="inputLabel">Name</p>
-                    <Input id="nameInput" className="userInput" placeholder="Enter name..." />
+                    <Input
+                        value={name}
+                        onInput={(e) => {
+                            setName(e.target.value)
+                        }}
+                        id="nameInput"
+                        className="userInput"
+                        placeholder="Enter name..." />
                 </div>
                 <div className="inputWrapper">
                     <p className="inputLabel">Age</p>
-                    <Input id="ageInput" className="userInput" placeholder="Enter age..." />
+                    <Input
+                        value={age}
+                        onInput={(e) => {
+                            setAge(e.target.value)
+                        }}
+                        id="ageInput"
+                        className="userInput"
+                        placeholder="Enter age..." />
                 </div>
                 <Button onClick={handleCreateData} id="submitBtn">Submit data</Button>
             </div>

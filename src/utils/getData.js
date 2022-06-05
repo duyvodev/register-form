@@ -1,4 +1,4 @@
-const url = "http://localhost:3000/animal"
+const url = "https://629c0b58e9358232f7550f74.mockapi.io/animals"
 
 async function fetchData() {
     return await (await fetch(url)).json()
