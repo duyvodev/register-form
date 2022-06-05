@@ -15,43 +15,40 @@ export default {
       return new Promise((rs) => {
         setTimeout(() => {
           rs({
-            "status": 200,
-            "role": "user",
-            "token": "USER91239912390"
-          })
-        }, 2000)
-      })
-    }
-    else if (userName === "admin" && userPasswd === "123123asd") {
+            status: 200,
+            role: "user",
+            token: "USER91239912390",
+          });
+        }, 2000);
+      });
+    } else if (userName === "admin" && userPasswd === "123123asd") {
       return new Promise((rs) => {
         setTimeout(() => {
           rs({
-            "status": 200,
-            "role": "admin",
-            "token": "ADMIN9123970928"
-          })
-        }, 2000)
-      })
-    }
-    else if (userName === "woodie" && userPasswd === "123123asdasd") {
+            status: 200,
+            role: "admin",
+            token: "ADMIN9123970928",
+          });
+        }, 2000);
+      });
+    } else if (userName === "woodie" && userPasswd === "123123asdasd") {
       return new Promise((rs) => {
         setTimeout(() => {
           rs({
-            "status": 200,
-            "role": "crudUser",
-            "token": "ADMIN9123970928"
-          })
-        }, 2000)
-      })
-    }
-    else {
+            status: 200,
+            role: "crudUser",
+            token: "ADMIN9123970928",
+          });
+        }, 2000);
+      });
+    } else {
       return new Promise((rs) => {
         setTimeout(() => {
           rs({
-            "status": 401,
-          })
-        }, 2000)
-      })
+            status: 401,
+          });
+        }, 2000);
+      });
     }
-  }
-}
+  },
+};

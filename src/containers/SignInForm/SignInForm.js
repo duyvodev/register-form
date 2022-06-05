@@ -37,9 +37,8 @@ export default function SignUpForm() {
       getToken(userName, passwd).then((userToken) => {
         if (userToken.role === "admin" || userToken.role === "user") {
           navigate("/dashboard");
-        }
-        else if (userToken.role === "crudUser") {
-          navigate("/crudpage")
+        } else if (userToken.role === "crudUser") {
+          navigate("/crudpage");
         }
       });
     }
